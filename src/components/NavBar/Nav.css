@@ -1,9 +1,6 @@
-html {
-  box-sizing: border-box;
-}
 .NavStyle {
   width: 100%;
-  height: 40px;
+  height: 50px;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -15,6 +12,6 @@ html {
   text-decoration: none;
   font-weight: 900;
 }
-.NavItem a :hover {
-  color: #66b2ff;
+.NavItem a:hover {
+  color: #e3e3e3;
 }
