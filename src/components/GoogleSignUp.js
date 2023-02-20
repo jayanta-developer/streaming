@@ -13,9 +13,10 @@ export default function GoogleSignUp() {
   };
 
   const handelCllBackResponses = (res) => {
+    const userData = jwt_decode(res.credential);
     localStorage.setItem("token", res.credential);
     setLogin(true);
-    setUser(jwt_decode(res.credential));
+    setUser(userData);
   };
   console.log(token, user);
   useEffect(() => {
