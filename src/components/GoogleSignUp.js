@@ -4,7 +4,7 @@ import { Button } from "@mui/material";
 
 export default function GoogleSignUp() {
   const token = localStorage.getItem("token");
-  const [user, setUser] = useState("");
+  const user = localStorage.getItem("user");
   const [login, setLogin] = useState(false);
 
   const handelLogOut = () => {
@@ -15,9 +15,10 @@ export default function GoogleSignUp() {
   const handelCllBackResponses = (res) => {
     localStorage.setItem("token", res.credential);
     setLogin(true);
-    setUser(jwt_decode(res.credential));
+    console.log(jwt_decode(...res.credential));
+    // localStorage.setItem("user", jwt_decode(res.credential));
   };
-  console.log(token, user);
+  // console.log(token, user);
   useEffect(() => {
     /* global google */
     if (window.google) {
