@@ -16,6 +16,8 @@ export default function NavBar() {
       {/* <h4>{user ? user.name : ""}</h4> */}
       <Box className="NavItem"><Link to="/">Streams</Link></Box>
       <Box className="NavItem"><Link to="/streams/new">New Streams</Link></Box>
+      <Box className="NavItem"><Link to="/products">Products</Link></Box>
+      <Box className="NavItem"><Link to="/products/cart">Cart</Link></Box>
       <Box className="NavItem"><GoogleSignUp /></Box>
     </Box>
   )
