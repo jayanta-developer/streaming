@@ -12,7 +12,13 @@ import StreamShow from "./components/streams/StreamShow";
 import Products from "./components/Products/Products";
 import Cart from "./components/Products/Cart";
 
+import { useDispatch } from "react-redux";
+import { fetchProducts } from "./store/productSlice";
+
 export default function App() {
+  const dispatch = useDispatch();
+  dispatch(fetchProducts());
+
   return (
     <>
       <NavBar />

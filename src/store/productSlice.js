@@ -1,6 +1,6 @@
 const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
 import axios from "axios";
-const STATUSES = Object.freeze({
+export const STATUSES = Object.freeze({
   IDLE: "idle",
   ERROR: "error",
   LOADING: "loading",
@@ -9,7 +9,8 @@ const STATUSES = Object.freeze({
 const productSlice = createSlice({
   name: "product",
   initialState: {
-    date: [],
+    data: [],
+    status: STATUSES.IDLE,
   },
   reducers: {
     // get(state, action) {
@@ -19,14 +20,14 @@ const productSlice = createSlice({
 
   extraReducers: (builder) => {
     builder
-      .addCase(getProduct.pending, (state, action) => {
+      .addCase(fetchProducts.pending, (state, action) => {
         state.status = STATUSES.LOADING;
       })
-      .addCase(getProduct.fulfilled, (state, action) => {
+      .addCase(fetchProducts.fulfilled, (state, action) => {
         state.data = action.payload;
         state.status = STATUSES.IDLE;
       })
-      .addCase(getProduct.rejected, (state, action) => {
+      .addCase(fetchProducts.rejected, (state, action) => {
         state.status = STATUSES.ERROR;
       });
   },
@@ -35,8 +36,9 @@ const productSlice = createSlice({
 export const { get } = productSlice.actions;
 export default productSlice.reducer;
 
-export const getProduct = createAsyncThunk("get/product", async () => {
-  const res = await axios.get("https://fakestoreapi.com/products");
-  const data = res.json();
+export const fetchProducts = createAsyncThunk("get/product", async () => {
+  const res = await fetch("https://fakestoreapi.com/products");
+  const data = await res.json();
+  // console.log(data);
   return data;
 });
