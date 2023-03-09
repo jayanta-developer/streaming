@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useSelector } from "react-redux";
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -8,9 +9,11 @@ import { Button, CardActionArea, CardActions } from '@mui/material';
 import { add } from "../../store/cartSlice"
 
 export default function ProductCard({ product }) {
+  const { data: products } = useSelector((state) => state.products);
   const dispatch = useDispatch()
+
   const handelClick = () => {
-    dispatch(add(product.id))
+    dispatch(add(products.find(el => el.id === product.id)))
   }
 
 
