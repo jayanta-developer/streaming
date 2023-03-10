@@ -14,11 +14,11 @@ export default function Cart() {
   }, [cartItems])
 
   return (
-    <Container sx={{ p: 8, display: "flex", flexDirection: "column", justifyContent: "space-between", height: "auto" }}>
+    <Container sx={{ p: 8, display: "flex", flexDirection: "row", flexWrap: "wrap", justifyContent: "space-between", height: "auto" }}>
       {
         item.map(product => (
-          <Box sx={{ width: "70%", height: "110px", display: "flex", flexDirection: "row" }}>
-            <Box><img width="110px" src={product?.image} alt="" /></Box>
+          <Box sx={{ width: "500px", height: "110px", display: "flex", flexDirection: "row", justifyContent: "space-between", margin: "10px" }}>
+            <Box sx={{ width: "100px" }}><img objectFit="cover" width="100%" src={product?.image} alt="" /></Box>
             <Box sx={{ display: "flex", flexDirection: "column", justifyContent: "space-evenly" }}>
               <h5>{product?.title}</h5>
               <p>{product?.description.slice(0, 10)}...</p>
